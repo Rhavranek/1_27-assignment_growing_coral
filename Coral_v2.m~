@@ -1,0 +1,31 @@
+%%This is for the drowning of a coral reef, after Galewsky (1998)
+% Rachel Havranek, 1/27/16
+
+%% Initialize
+
+%Things that control subsidence and growth 
+Gm=0.01; %14mm/yr max growth rate
+I0=2000; % mE/m2s, surface light intensity
+Ik=450; %mE/m2s, saturating light intensity
+u=1; %mm/yr -- sinking rate
+u = u/1000; % now in m
+
+%horizontal array
+dx = 100;
+xmax = 10000;
+x = 0:dx:xmax;
+
+% depth array
+zmax = 100;
+S = 0.05; %slope of the ocean bottom
+zb = zmax - (S*x); %zb
+C = zeros(size(x));
+z = zb+C;
+
+% time array
+tmax=100000;
+dt=100; %kdt/dz^2 has to be less than 0.5 for it to run
+t=0:dt:tmax; %creates an array of time steps (time)
+imax=length(t);
+nplots = 100;
+tplot = tmax/nplots;
